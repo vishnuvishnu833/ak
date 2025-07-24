@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deepa Mehendi Artist - Splash</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body, html {
+      height: 100%;
+      overflow: hidden;
+      background: linear-gradient(to top, #011e3c, #021f43);
+      font-family: 'Segoe UI', sans-serif;
+      position: relative;
+      color: white;
+    }
+    .moon {
+      position: absolute;
+      top: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, #ffffffcc, #ffffff22);
+      border-radius: 50%;
+      box-shadow: 0 0 30px #fff;
+      animation: moonPulse 6s infinite ease-in-out;
+    }
+    @keyframes moonPulse {
+      0%, 100% { transform: translateX(-50%) scale(1); }
+      50% { transform: translateX(-50%) scale(1.1); }
+    }
+
+    .ocean {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 30%;
+      background: linear-gradient(to top, #012f4c, #014d6f);
+      animation: wave 5s infinite ease-in-out alternate;
+    }
+    @keyframes wave {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-10px); }
+    }
+
+    .cone {
+      position: absolute;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-20deg);
+      width: 80px;
+      height: 180px;
+      background: conic-gradient(from 180deg, #643001, #a65f03, #643001);
+      border-radius: 50% 50% 10% 10% / 10% 10% 50% 50%;
+      box-shadow: 0 0 10px rgba(255, 140, 0, 0.5);
+      animation: coneWiggle 5s infinite ease-in-out;
+    }
+    @keyframes coneWiggle {
+      0%, 100% { transform: translateX(-50%) rotate(-20deg); }
+      50% { transform: translateX(-50%) rotate(-25deg); }
+    }
+
+    .mehendi-pattern {
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Noto Sans Devanagari', cursive;
+      font-size: 30px;
+      color: #ffd700;
+      text-shadow: 0 0 5px #ffda44, 0 0 15px #ffcc00;
+      opacity: 0;
+      animation: fadeIn 3s ease forwards 5s;
+    }
+
+    .signature {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      font-family: 'Lucida Calligraphy', cursive;
+      font-size: 25px;
+      color: #ffd700;
+      opacity: 0;
+      animation: fadeIn 2s ease forwards 7.5s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .gold-leaf {
+      position: absolute;
+      width: 10px;
+      height: 5px;
+      background: gold;
+      opacity: 0.6;
+      transform: rotate(45deg);
+      animation: float 12s linear infinite;
+    }
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.6;
+      }
+      50% {
+        opacity: 0.3;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .peacock {
+      position: absolute;
+      top: 20%;
+      left: 10%;
+      width: 60px;
+      height: 60px;
+      background: url('images/peacock.png') no-repeat center/contain;
+      opacity: 0.8;
+      animation: float 10s linear infinite;
+    }
+
+    .hands {
+      position: absolute;
+      bottom: 20%;
+      left: 75%;
+      width: 80px;
+      height: 80px;
+      background: url('images/hands.png') no-repeat center/contain;
+      opacity: 0.7;
+      animation: float 14s ease-in-out infinite;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="moon"></div>
+  <div class="ocean"></div>
+  <div class="cone"></div>
+  <div class="mehendi-pattern">शुभ मंगल सौभाग्य</div>
+  <div class="signature">– Deepa Mehendi Artist</div>
+  <div class="peacock"></div>
+  <div class="hands"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Gold leaves
+      for (let i = 0; i < 25; i++) {
+        const leaf = document.createElement('div');
+        leaf.className = 'gold-leaf';
+        leaf.style.left = `${10 + Math.random() * 80}%`;
+        leaf.style.bottom = `${Math.random() * 30}%`;
+        leaf.style.opacity = 0.3 + Math.random() * 0.6;
+        leaf.style.transform = `rotate(${Math.random() * 360}deg)`;
+        leaf.style.animationDelay = `${Math.random() * 5}s`;
+        leaf.style.animationDuration = `${12 + Math.random() * 12}s`;
+        document.body.appendChild(leaf);
+      }
+
+      // Finer dust
+      for (let i = 0; i < 40; i++) {
+        const dust = document.createElement('div');
+        dust.className = 'gold-leaf';
+        dust.style.width = `${2 + Math.random() * 3}px`;
+        dust.style.height = `${1 + Math.random() * 2}px`;
+        dust.style.left = `${Math.random() * 100}%`;
+        dust.style.bottom = `${Math.random() * 30}%`;
+        dust.style.opacity = 0.2 + Math.random() * 0.4;
+        dust.style.animationDelay = `${Math.random() * 8}s`;
+        dust.style.animationDuration = `${8 + Math.random() * 10}s`;
+        dust.style.clipPath = 'circle(50% at 50% 50%)';
+        document.body.appendChild(dust);
+      }
+    });
+
+    // After animation ends, redirect to home.html
+    setTimeout(() => {
+      document.body.style.overflow = 'auto';
+      window.location.href = 'home.html';
+    }, 10500);
+  </script>
+</body>
+</html>
